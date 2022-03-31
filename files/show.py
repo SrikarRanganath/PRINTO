@@ -8,7 +8,7 @@ args=vars(ap.parse_args())
 
 image=cv2.imread(args["image"])
 
-image = cv2.resize(image,(76,4137),interpolation = cv2.INTER_LINEAR)
+
 cv2.imwrite("M_reference.bmp",image)
 cv2.imshow("Image",image)
 cv2.waitKey(0)

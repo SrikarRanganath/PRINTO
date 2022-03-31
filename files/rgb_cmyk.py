@@ -3,9 +3,14 @@
 import numpy as np
 #import matplotlib.pyplot as plt
 import cv2
+import argparse
 
 # Import image
-img = cv2.imread('/home/srikar/OpenCV/Canvera_CMYK_Linearization.tif', cv2.IMREAD_UNCHANGED)
+ap=argparse.ArgumentParser()
+ap.add_argument("-i","--image",required=True,help="path to the image")
+args=vars(ap.parse_args())
+img=cv2.imread(args["image"])
+
 
 # Create float
 bgr = img.astype(float)/255.
@@ -45,8 +50,8 @@ cv2.imshow('cmyk', CMYK)
 
 cv2.waitKey(0)
 # Save channels
-cv2.imwrite('/home/srikar/OpenCV/reference_in_CMYK/C_cc.jpg', C)
-cv2.imwrite('/home/srikar/OpenCV/reference_in_CMYK/M_cc.jpg', M)
-cv2.imwrite('/home/srikar/OpenCV/reference_in_CMYK/Y_cc.jpg', Y)
-cv2.imwrite('/home/srikar/OpenCV/reference_in_CMYK/K_cc.jpg', K)
-cv2.imwrite('/home/srikar/OpenCV/reference_in_CMYK/CMYK_cc.jpg',CMYK)
+cv2.imwrite('/home/srikar/OpenCV/C_cc.jpg', C)
+cv2.imwrite('/home/srikar/OpenCV/M_cc.jpg', M)
+cv2.imwrite('/home/srikar/OpenCV/Y_cc.jpg', Y)
+cv2.imwrite('/home/srikar/OpenCV/K_cc.jpg', K)
+cv2.imwrite('/home/srikar/OpenCV/CMYK_cc.jpg',CMYK)

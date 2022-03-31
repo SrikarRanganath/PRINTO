@@ -6,11 +6,14 @@ import numpy as np
 # j is for rows and i is for columns
 
 #RGB_list=[] #This list is to find missing values in RGB
-RED = []
-GREEN = []
-BLUE =[] 
+#RED = []
+#GREEN = []
+#BLUE =[] 
+cmyk_samples = []
+
 
 #This is RGB to CMYK conversion function
+
 def rgb_to_cmyk (avg_red, avg_green, avg_blue):
    r1 = avg_red / 255
    g1 = avg_green / 255
@@ -19,7 +22,9 @@ def rgb_to_cmyk (avg_red, avg_green, avg_blue):
    c = ((1-r1)-k)/(1-k)
    m = ((1-g1)-k)/(1-k)
    y = ((1-b1)-k)/(1-k)
-   print(int(c*100),int(m*100),int(y*100),int(k*100))
+   cmyk_tuple = (int(c*255),int(m*255),int(y*255),int(k*255))
+   cmyk_samples.append(cmyk_tuple)
+   #print(cmyk_tuple)
 
 
 def make_border(j,i,image):
@@ -80,15 +85,19 @@ mid_point = int(column_width / 2)
 
 for i in range(mid_point,width,column_width): #This becomes columns
   print("\n")
-  for j in range(7,height-4,4): # (ROWS) Leave some pixels(16.1) to get 255 buckets after each bucket
+  for j in range(5,height-5,5): # (ROWS) Leave some pixels(16.1) to get 255 buckets after each bucket
      #print(average(j,i,image))
      average(j,i,image)
-
+for pixel in cmyk_samples:
+	print(pixel)
+print(cmyk_samples)	
 cv2.imshow("image",image)
 cv2.imwrite("sampled_img1.jpg",image)
 cv2.waitKey(0)
 
 ################################ CHECK MISSING VALUES #################################################
+
+
 
 """
 missing_count = 0
