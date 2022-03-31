@@ -21,3 +21,6 @@ output of the LUT.py will be a semi-transformed image(without interpolation) and
 Next step is to find a way to use data from graph for interpolation
 
 IGNORE convert.py FOR NOW
+
+Figure1.jpg is the interpolation graph I got from LUT.py
+
