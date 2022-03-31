@@ -61,7 +61,7 @@ for column in range(0,int(width)): #This becomes columns
         blue = image1[j,i,0]
         if blue in reference_B:
             index = reference_B.index(blue)
-            image1[j,i,0] = incoming_B[index]"""
+            image1[j,i,0] =  incoming_B[index]"""
 
 
 
