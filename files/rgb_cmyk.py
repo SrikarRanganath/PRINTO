@@ -1,3 +1,10 @@
+"""
+This code is used to convert RGB image into C, M, Y, K, CMYK and grayscale
+Don't forget to change the output file name in imwrite()
+
+usage : python3 rgb_cmyk.py -i '/home/srikar/image.jpg'
+
+"""
 #!/usr/bin/python
 
 import numpy as np
