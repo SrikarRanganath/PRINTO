@@ -7,8 +7,6 @@ def print_image_info(image):
     print("height: %d pixels" % (image.shape[0]))
     print("channels: %d" % (image.shape[2]))
 
-
-
 image = cv2.imread('/home/srikar/OpenCV/CMYK_reference.tif')
 
 image = cv2.resize(image,(622,254), interpolation= cv2.INTER_LINEAR)
@@ -32,17 +30,6 @@ for column in range (mid_point + 0*column_width , 1*column_width , (column_width
             output_image[out_row,out_column,1] = image[row , column+pixel,1]
             output_image[out_row,out_column,2] = image[row , column+pixel,2]
 
-"""i = 1
-for row in range (1,height):
-    for column in range(20):
-        #pixel = temp[i]
-        output_image[row,column,0] = temp[i][0]
-        output_image[row,column,1] = temp[i][1]
-        output_image[row,column,2] = temp[i][2]
-        i=i+1
-        """
-#print(temp)
-#output_image = output_image[0:138, 0:21]
 cv2.imshow("output",output_image)        
 cv2.waitKey()
 cv2.imwrite("C_reference_1.bmp",output_image)
