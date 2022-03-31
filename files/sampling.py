@@ -1,19 +1,24 @@
+""" 
+this code is used to sample images. the kernel that I used for sampling is 3 X 5. 
+I appplied this code on incoming and reference cyan bands.
+
+
+
+
+j is for rows and i is for columns
+"""
+
 #from matplotlib import pyplot as plt
 import argparse
 import cv2
 import numpy as np
 
-# j is for rows and i is for columns
-
-#RGB_list=[] #This list is to find missing values in RGB
 #RED = []
 #GREEN = []
 #BLUE =[] 
 cmyk_samples = []
 
-
 #This is RGB to CMYK conversion function
-
 def rgb_to_cmyk (avg_red, avg_green, avg_blue):
    r1 = avg_red / 255
    g1 = avg_green / 255
@@ -26,6 +31,8 @@ def rgb_to_cmyk (avg_red, avg_green, avg_blue):
    cmyk_samples.append(cmyk_tuple)
    #print(cmyk_tuple)
 
+#This function will create green coloured border around the averaged_sampled_area
+#Call this function only after taking the average as the borders are also included in averaging
 
 def make_border(j,i,image):
     for k in range (-2,3):
@@ -60,7 +67,8 @@ def average(j,i,image):
     #BLUE.append(avg_b)
     #return  pixel
     #return int(image[j,i,0])
-
+	
+#This function is used to display the image properties(width , height, number of channels)
 def print_image_info(image):
     print("width: %d pixels" % (image.shape[1]))
     print("height: %d pixels" % (image.shape[0]))
@@ -68,24 +76,23 @@ def print_image_info(image):
 
 ################################################    DRIVER CODE    ####################################
 
+# Following block is used take input image name as argument from CLI
+######################################################################################################
 ap=argparse.ArgumentParser()
 ap.add_argument("-i","--image",required=True,help="path to the image")
 args=vars(ap.parse_args())
 image=cv2.imread(args["image"])
+######################################################################################################
+
 print_image_info(image)
 height=image.shape[0]
 width =image.shape[1] # width of image
 column_width = int(width / 1) #width of each column keep denom = 23 for cmyk full band image
 mid_point = int(column_width / 2)
 
-"""for plane in (2,-1,-1):
-   image_copy = image.copy()
-   image_copy[:,:,plane] = 0;
-   print("\n*********************NEXT PLANE*********************************") """
-
-for i in range(mid_point,width,column_width): #This becomes columns
+for i in range(mid_point,width,column_width): #This becomes columns 
   print("\n")
-  for j in range(5,height-5,5): # (ROWS) Leave some pixels(16.1) to get 255 buckets after each bucket
+  for j in range(5,height-5,5): # (ROWS) Leave some pixels(5) to get 255 buckets after each bucket
      #print(average(j,i,image))
      average(j,i,image)
 for pixel in cmyk_samples:
@@ -95,10 +102,9 @@ cv2.imshow("image",image)
 cv2.imwrite("sampled_img1.jpg",image)
 cv2.waitKey(0)
 
+
+
 ################################ CHECK MISSING VALUES #################################################
-
-
-
 """
 missing_count = 0
 print("\n",RED,"\n")
