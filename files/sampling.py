@@ -3,6 +3,9 @@ this code is used to sample images. the kernel that I used for sampling is 3 X 5
 3X5 matrix will have  15 values. Find average of those 15 values.
 I appplied this code on incoming and reference CYAN_full bands.
 j is for rows and i is for columns
+
+usage : python3 sampling.py -i /home/srikar/image.extension > output.txt
+check the output in output.txt file
 """
 
 #from matplotlib import pyplot as plt
