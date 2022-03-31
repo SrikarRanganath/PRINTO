@@ -1,10 +1,7 @@
 """ 
 this code is used to sample images. the kernel that I used for sampling is 3 X 5. 
-I appplied this code on incoming and reference cyan bands.
-
-
-
-
+3X5 matrix will have  15 values. Find average of those 15 values.
+I appplied this code on incoming and reference CYAN_full bands.
 j is for rows and i is for columns
 """
 
@@ -33,7 +30,6 @@ def rgb_to_cmyk (avg_red, avg_green, avg_blue):
 
 #This function will create green coloured border around the averaged_sampled_area
 #Call this function only after taking the average as the borders are also included in averaging
-
 def make_border(j,i,image):
     for k in range (-2,3):
         image[j-1,i-k] = (0,255,0)
@@ -97,9 +93,10 @@ for i in range(mid_point,width,column_width): #This becomes columns
      average(j,i,image)
 for pixel in cmyk_samples:
 	print(pixel)
-print(cmyk_samples)	
+print(cmyk_samples)
+
 cv2.imshow("image",image)
-cv2.imwrite("sampled_img1.jpg",image)
+cv2.imwrite("sampled_img1.jpg",image) #change the name as per the input image
 cv2.waitKey(0)
 
 
