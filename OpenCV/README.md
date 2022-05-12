@@ -12,4 +12,10 @@ You will find 55 colors inside the palette
 This will give you 55 samples of (r,g,b)
 
 4) Take these channels independently each at a time and put the array in transform_red _green or _blue.py files.
+5) After generating the LUT, put these arrays in validate.py
+6) run validate.py by giving the scanned image as argument
 
+NEXT STEPS:
+
+1) Check if you can adjust the gain of the camera so that range in scanned palette is increased
+2) Check if there is any cross channel coupling
