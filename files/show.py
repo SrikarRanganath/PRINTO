@@ -1,3 +1,5 @@
+# This code is to show images 
+# In the CLI, type "python3 show.py -i 'image_name_with_full_path' "
 import argparse
 import cv2
 import numpy as np

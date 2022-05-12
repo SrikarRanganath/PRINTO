@@ -1,3 +1,14 @@
+"""
+This code will try to fit x and y using a 5th order polynomial and shows us the graph
+
+usage : python3 equation.py
+
+This code is used for interpolation(but later dropped as error is more)
+
+x and y are obtained from lookup.py
+
+"""
+
 from numpy import arange
 from pandas import read_csv
 from scipy.optimize import curve_fit
